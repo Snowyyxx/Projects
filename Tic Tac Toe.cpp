@@ -11,7 +11,7 @@ class TicTacToe{
         
         for(int i=0;i<3;i++){
             for(int j=0;j<3;j++){
-                if(GameGrid[i][j]!='_'){
+                if(GameGrid[i][j]!=' '){
                  
                     if(j+2<3&&GameGrid[i][j]==GameGrid[i][j+1] && GameGrid[i][j]==GameGrid[i][j+2]){
                         std::cout<<"We have a winner!"<<std::endl;
@@ -41,7 +41,7 @@ class TicTacToe{
         int count=0;
         for(auto i =0;i<3;i++){
             for(auto j =0;j<3;j++){
-                if(GameGrid[i][j]!='_'){
+                if(GameGrid[i][j]!=' '){
                     count++;
                 }
             }
@@ -59,7 +59,7 @@ class TicTacToe{
     public:
 
     TicTacToe(){
-        GameGrid = std::vector<std::vector<char>>(3,std::vector<char>(3,'_'));
+        GameGrid = std::vector<std::vector<char>>(3,std::vector<char>(3,' '));
         GameOver = false;
     
     
@@ -93,7 +93,7 @@ class TicTacToe{
             if (row >= 1 && row <= 3 && column >= 1 && column <= 3) {
                 row -= 1;
                 column -= 1;
-                if(GameGrid[row][column]=='_'){
+                if(GameGrid[row][column]==' '){                                                         
                     GameGrid[row][column]='O';
                     CheckWin();
                     if(GameOver==false){
@@ -121,7 +121,7 @@ class TicTacToe{
             if (row >= 1 && row <= 3 && column >= 1 && column <= 3) {
                 row -= 1;
                 column -= 1;
-                if(GameGrid[row][column]=='_'){
+                if(GameGrid[row][column]==' '){
                     GameGrid[row][column]='X';
                     CheckWin();
                     if(GameOver==false){
