@@ -49,6 +49,8 @@ class TicTacToe{
         if(count==9){
             std::cout<<"ITS A DRAW!"<<std::endl;
             return true;
+        } else{
+            return false;
         }
 
 
@@ -61,22 +63,21 @@ class TicTacToe{
         GameOver = false;
     
     
-        for(int i =0;i<3;i++){
-            for(int j =0;j<3;j++){
-                std::cout<<GameGrid[i][j]<<"|";
-            }
-            std::cout<<std::endl;
-        } 
+        DisplayBoard();
     }
 
-    void DisplayBoard(){
-        for(int i =0;i<3;i++){
-            for(int j =0;j<3;j++){
-                std::cout<<GameGrid[i][j]<<"|";
-            }
-            std::cout<<std::endl;
-        } 
-    }
+    void DisplayBoard() {
+    std::cout << "     |     |     " << std::endl;
+    std::cout << "  " << GameGrid[0][0] << "  |  " << GameGrid[0][1] << "  |  " << GameGrid[0][2] << "  " << std::endl;
+    std::cout << "_____|_____|_____" << std::endl;
+    std::cout << "     |     |     " << std::endl;
+    std::cout << "  " << GameGrid[1][0] << "  |  " << GameGrid[1][1] << "  |  " << GameGrid[1][2] << "  " << std::endl;
+    std::cout << "_____|_____|_____" << std::endl;
+    std::cout << "     |     |     " << std::endl;
+    std::cout << "  " << GameGrid[2][0] << "  |  " << GameGrid[2][1] << "  |  " << GameGrid[2][2] << "  " << std::endl;
+    std::cout << "     |     |     " << std::endl;
+}
+
 
     void GamePlay(){
         int count = 0;
@@ -86,7 +87,6 @@ class TicTacToe{
             std::cout<<"Where would you like to place the circle: "<<std::endl;
             std::cout<<"    Which Row?: ";
             std::cin>>row;
-            std::cout<<std::endl;
             std::cout<<"    Which Column?: ";
             std::cin>>column;
 
@@ -115,7 +115,6 @@ class TicTacToe{
             std::cout<<"Where would you like to place the cross: "<<std::endl;
             std::cout<<"    Which Row?: ";
             std::cin>>row;
-            std::cout<<std::endl;
             std::cout<<"    Which Column?: ";
             std::cin>>column;
 
@@ -130,6 +129,7 @@ class TicTacToe{
                     }
 
                     if(CheckDraw()==true){
+                        std::cout<<"well played:)";
                         break;
                     }
 
