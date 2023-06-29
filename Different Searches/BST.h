@@ -1,9 +1,4 @@
-#include<iostream>
-#include<stack>
-
-int Algorithim(int i){
-    return 2*i+1;
-}
+#include"headers.h"
 
 class Node{
     public:
@@ -53,6 +48,7 @@ public:
                 // If the key already exists in the tree, you can decide
                 // to handle it in a specific way or ignore the duplicate.
                 // Here, we choose to ignore duplicates.
+                std::cout<<"Duplicates not allowed!"<<std::endl;
                 delete newNode;
                 return;
             }
@@ -100,11 +96,31 @@ public:
             current = current->right;
         }
     }
+
+    void AddElementsToBSTUsingVector(int NumberOfElements,std::vector<int>RandomNumbers){
+    for(auto i = RandomNumbers.begin();i!=RandomNumbers.end();++i){
+        Insert(*i);
+    }
+
+    }
+
+    void CalculateTimeBST(int Element_To_Find){
+        auto start = std::chrono::high_resolution_clock::now();
+        Search(Element_To_Find);
+        auto end = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+        std::cout <<std::endl <<"Execution time for TREE: " << duration.count() << " microseconds" << std::endl;
+
+}
+
+
 };
 
-
-void AddElementsToBST(BinarySearchTree &object,int NumberOfElements){
-    for(auto i =0;i<NumberOfElements;i++){
-        object.Insert(Algorithim(i));
-    }
+int GenerateRandomNumbers(std::vector<int>&RandomNumbers,int NumberOfElements){
+    std::iota(RandomNumbers.begin(),RandomNumbers.end(),1);
+    std::mt19937 generator(std::random_device{}());
+    std::shuffle(RandomNumbers.begin(), RandomNumbers.end(), generator);
 }
+
+
+

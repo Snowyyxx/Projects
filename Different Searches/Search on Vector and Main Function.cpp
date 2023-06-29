@@ -1,26 +1,20 @@
-#include<iostream>
-#include<vector>
-#include<unordered_map>
+#include"headers.h"
+#include"Linear Search.h"
+#include"Menue.h"
 #include"BST.h"
-#include <chrono>
 
 
-
-void AddElementsToVector(std::vector<int>&Numbers){
-    int len = Numbers.size();
-    for(auto i =0;i<len;i++){
-        Numbers[i]=Algorithim(i);
+void DisplayRandomNumbers(std::vector<int>RandomNumbers){
+    for(auto i = RandomNumbers.begin();i!=RandomNumbers.end();++i){
+        std::cout<<*i<<",";
     }
 }
 
-void CalculateTimeBST(int Element_To_Find,BinarySearchTree &BST){
-    auto start = std::chrono::high_resolution_clock::now();
-    BST.Search(Element_To_Find);
-    auto end = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
-    std::cout <<std::endl <<"Execution time for TREE: " << duration.count() << " microseconds" << std::endl;
-
+void AddElementsToVector(std::vector<int>&Numbers){
+    
 }
+
+
 
 void LinearSearch(std::vector<int>&Numbers, int element_to_find){
     int count=0;
@@ -33,36 +27,46 @@ void LinearSearch(std::vector<int>&Numbers, int element_to_find){
     }
 }
 
-void InsertMenue(std::unordered_map<int,std::string>&Menue,std::string Item){
-    static int count =0;
-    Menue.insert({count,Item});
-    count++;
+void ShowMenue(){
+    Menue menue;
+    menue.Insert("BST");
+    menue.Insert("Linear Search");
+    menue.DisplayMenue();
+
 }
 
-void DisplayMenue(std::unordered_map<int,std::string>&Menue){
-    for(auto i = Menue.begin();i!=Menue.end();++i){
-        std::cout<<(*i).first<<": "<<(*i).second;
-    }
+int SearchWhat(){
+    int num;
+    std::cout<<"What Element would you like to search: ";
+    std::cin>>num;
+    return num;
 }
+
 
 int main(){
-    
     int NumberOfElements;
-    int Element_To_Find;
-    std::unordered_map<int,std::string>Menue;
-    BinarySearchTree BST;
-   
+    int option;
     std::cout<<"How many elements do you want in the search list: ";
     std::cin>>NumberOfElements;
+    std::vector<int>RandomNumbers(NumberOfElements);
+    GenerateRandomNumbers(RandomNumbers,NumberOfElements);
+    ShowMenue();
+
+    std::cout<<"What would you like to use: ";
+    std::cin>>option;
+
+   
+    if(option==0){
+        BinarySearchTree BST;
+        BST.AddElementsToBSTUsingVector(NumberOfElements,RandomNumbers);
+        DisplayRandomNumbers(RandomNumbers);
+        BST.CalculateTimeBST(SearchWhat());
+        
+    } else if(option==1){
+        DisplayRandomNumbers(RandomNumbers);
+        CalculateTimeForLinearSearch(RandomNumbers,SearchWhat());
+    }
+
+
     
-    AddElementsToBST(BST,NumberOfElements);
-    
-    std::vector<int>Numbers(NumberOfElements);
-    AddElementsToVector(Numbers);
-
-    std::cout<<"What element to find: ";
-    std::cin>>Element_To_Find;
-
-    CalculateTimeBST(Element_To_Find,BST);
-
 }
