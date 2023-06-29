@@ -14,20 +14,39 @@ class TicTacToe{
                 if(GameGrid[i][j]!=' '){
                  
                     if(j+2<3&&GameGrid[i][j]==GameGrid[i][j+1] && GameGrid[i][j]==GameGrid[i][j+2]){
-                        std::cout<<"We have a winner!"<<std::endl;
                         GameOver=true;
                         DisplayBoard();
+                        std::cout<<"We have a winner!"<<std::endl;
+                        if(GameGrid[i][j]=='O'){
+                            std::cout<<"Circle Wins! Game Over :)"<<std::endl;
+                        }else{
+                            std::cout<<"Cross Wins! Game Over :)";
+                        }
+
                     }
 
                     else if(i+2<3&&GameGrid[i][j]==GameGrid[i+1][j] && GameGrid[i][j]==GameGrid[i+2][j]){
-                        std::cout<<"We have a winner!"<<std::endl;
                         GameOver=true;
                         DisplayBoard();
+                        std::cout<<"We have a winner!"<<std::endl;
+                        if(GameGrid[i][j]=='O'){
+                            std::cout<<"Circle Wins! Game Over :)"<<std::endl;
+                        }else{
+                            std::cout<<"Cross Wins! Game Over :)";
+                        }
+
                     }
                     else if(j+2<3&&i+2<3&&GameGrid[i][j]==GameGrid[i+1][j+1] && GameGrid[i][j]==GameGrid[i+2][j+2]){
-                        std::cout<<"We have a winner!"<<std::endl;
                         GameOver=true;
                         DisplayBoard();
+                        std::cout<<"We have a winner!"<<std::endl;
+                        if(GameGrid[i][j]=='O'){
+                            std::cout<<"Circle Wins! Game Over :)"<<std::endl;
+                        }else{
+                            std::cout<<"Cross Wins! Game Over :)";
+                        }
+
+
                     }
                     
                 }
