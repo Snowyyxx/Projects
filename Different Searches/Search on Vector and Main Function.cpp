@@ -10,12 +10,7 @@ void DisplayRandomNumbers(std::vector<int>RandomNumbers){
     }
 }
 
-void AddElementsToVector(std::vector<int>&Numbers){
-    
-}
-
-
-
+;
 void LinearSearch(std::vector<int>&Numbers, int element_to_find){
     int count=0;
     for(auto i =Numbers.begin();i!=Numbers.end();++i){
@@ -27,13 +22,7 @@ void LinearSearch(std::vector<int>&Numbers, int element_to_find){
     }
 }
 
-void ShowMenue(){
-    Menue menue;
-    menue.Insert("BST");
-    menue.Insert("Linear Search");
-    menue.DisplayMenue();
 
-}
 
 int SearchWhat(){
     int num;
@@ -48,25 +37,33 @@ int main(){
     int option;
     std::cout<<"How many elements do you want in the search list: ";
     std::cin>>NumberOfElements;
-    std::vector<int>RandomNumbers(NumberOfElements);
+    std::vector<int>RandomNumbers(NumberOfElements,NULL);
     GenerateRandomNumbers(RandomNumbers,NumberOfElements);
-    ShowMenue();
-
+    Menue menue;
+    menue.Insert("BST");
+    menue.Insert("Linear Search");
+    menue.Insert("AVL Tree");
+    menue.DisplayMenue();
     std::cout<<"What would you like to use: ";
     std::cin>>option;
 
-   
+    while(option!=-1){
     if(option==0){
         BinarySearchTree BST;
         BST.AddElementsToBSTUsingVector(NumberOfElements,RandomNumbers);
         DisplayRandomNumbers(RandomNumbers);
         BST.CalculateTimeBST(SearchWhat());
-        
+        menue.DisplayMenue();
+        std::cout<<std::endl<<"Enter -1 to exit the program!"<<std::endl;
+        std::cin>>option;
     } else if(option==1){
         DisplayRandomNumbers(RandomNumbers);
         CalculateTimeForLinearSearch(RandomNumbers,SearchWhat());
+        menue.DisplayMenue();
+        std::cout<<std::endl<<"Enter -1 to exit the program!"<<std::endl;
+        std::cin>>option;
     }
 
 
-    
+    }
 }
